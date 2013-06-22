@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MVI-yA-KVy">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Map View Controller - Sushi Snob-->
+        <scene sceneID="7CV-80-eTe">
+            <objects>
+                <viewController id="NX3-kD-bh9" customClass="TabMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rXk-xO-Zh7">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="y60-nT-MmH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="LGW-Qh-jSz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NX3-kD-bh9" id="w2J-xQ-2C2"/>
+                                </connections>
+                            </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" animating="YES" style="whiteLarge" id="Yjj-Rx-dvp">
+                                <rect key="frame" x="142" y="181" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sushi Snob" id="FEe-Ly-1fa">
+                        <barButtonItem key="leftBarButtonItem" image="currentLocation.png" width="30" id="kpT-Uv-YGT">
+                            <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <connections>
+                                <action selector="refreshLocationButton:" destination="NX3-kD-bh9" id="7p6-Q6-xCy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="List" id="UtO-iJ-NZC">
+                            <connections>
+                                <segue destination="tJX-Ec-zk8" kind="push" identifier="tableView" id="wMj-cG-a6d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Yjj-Rx-dvp" id="xVS-Ek-o9A"/>
+                        <outlet property="refreshButton" destination="kpT-Uv-YGT" id="9jk-Jg-S4g"/>
+                        <outlet property="venueMapView" destination="LGW-Qh-jSz" id="Xzk-Au-8kt"/>
+                        <segue destination="h3a-9D-c8p" kind="push" identifier="pushWebView" id="CKf-wm-ciy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cc7-ys-q2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="-269"/>
+        </scene>
+        <!--Venue Table View Controller - Locations-->
+        <scene sceneID="R7J-my-LxA">
+            <objects>
+                <viewController id="tJX-Ec-zk8" customClass="VenueTableViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jy9-wK-9ix">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="darkWoodBG.png" id="agr-wC-4Rm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.14901960780000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" id="hHz-f8-KY0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell alpha="0.99999999999999989" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="venue" rowHeight="67" id="fnK-lf-N7N" customClass="VenueCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VenueName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sp1-Ie-xzw">
+                                                    <rect key="frame" x="20" y="8" width="199" height="28"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="18"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="VenueAddress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vxx-9U-0v9">
+                                                    <rect key="frame" x="20" y="30" width="199" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QXg-4L-tGf">
+                                                    <rect key="frame" x="165" y="21" width="119" height="23"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lineForTableCell.png" id="dlb-Rn-kst">
+                                                    <rect key="frame" x="0.0" y="55" width="320" height="2"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="venueAddress" destination="Vxx-9U-0v9" id="nqo-ak-cAz"/>
+                                            <outlet property="venueDistance" destination="QXg-4L-tGf" id="ReW-8h-a2A"/>
+                                            <outlet property="venueName" destination="Sp1-Ie-xzw" id="1ic-24-zJW"/>
+                                            <segue destination="h3a-9D-c8p" kind="push" identifier="tableToWebView" id="fkm-tp-K0J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tJX-Ec-zk8" id="Odv-fv-cLr"/>
+                                    <outlet property="delegate" destination="tJX-Ec-zk8" id="LZ8-zu-XUk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Locations" id="yrx-v8-7pB"/>
+                    <connections>
+                        <outlet property="venueTableView" destination="hHz-f8-KY0" id="efE-Em-MVl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eds-9G-oVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296" y="-855"/>
+        </scene>
+        <!--Map Venue Web View View Controller-->
+        <scene sceneID="onX-JR-W1a">
+            <objects>
+                <viewController id="h3a-9D-c8p" customClass="MapVenueWebViewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Taw-2U-ccx">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="darkWoodBG.png" id="eoQ-kk-aDe">
+                                <rect key="frame" x="-2" y="0.0" width="322" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.14901960780000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <webView contentMode="scaleToFill" id="O3f-Gd-huU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="h3a-9D-c8p" id="TYO-vO-ZNH"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="gray" id="ShM-YG-Cc5">
+                                <rect key="frame" x="150" y="131" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Veu-Mz-r0P"/>
+                    <connections>
+                        <outlet property="venueFSWebView" destination="O3f-Gd-huU" id="4VP-Zu-7jg"/>
+                        <outlet property="webActivityIndicator" destination="ShM-YG-Cc5" id="gfX-rk-qav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJT-2d-dfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1725" y="-261"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Y35-7e-F3b">
+            <objects>
+                <tabBarController id="MVI-yA-KVy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="c4n-lo-Emf">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QKg-Mg-Ojh" kind="relationship" relationship="viewControllers" id="nFy-qb-psh"/>
+                        <segue destination="zfC-NA-9Kj" kind="relationship" relationship="viewControllers" id="1Xt-4d-gfT"/>
+                        <segue destination="67E-e6-H6h" kind="relationship" relationship="viewControllers" id="UDg-VO-oGd"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Va2-3U-IEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-225" y="435"/>
+        </scene>
+        <!--Tab Compass View Controller - Compass-->
+        <scene sceneID="BUj-Kv-ddP">
+            <objects>
+                <viewController id="zfC-NA-9Kj" customClass="TabCompassViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="31i-pv-qYW">
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="plate.png" id="Bm6-Nh-mEC">
+                                <rect key="frame" x="0.0" y="85" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="chopsticks.png" id="wsa-tc-jFU">
+                                <rect key="frame" x="112" y="90" width="100" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="寿司俗物携帯アプリ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BG3-aR-QXO">
+                                <rect key="frame" x="46" y="26" width="228" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="25"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="Ks6-5H-qci">
+                                <rect key="frame" x="142" y="231" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" id="Ukq-PC-ZxV">
+                                <rect key="frame" x="13" y="413" width="298" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retrieving Location..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mTm-c1-Fze">
+                                        <rect key="frame" x="-6" y="8" width="310" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Distance..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9DV-Gd-fPR">
+                                        <rect key="frame" x="-6" y="34" width="310" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="16"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=">" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="41D-pO-Gkl">
+                                        <rect key="frame" x="221" y="21" width="29" height="53"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sadSushi.png" id="LWw-u7-E5N">
+                                <rect key="frame" x="85" y="165" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.14901960784313725" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Compass" id="bMa-9C-XOL"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Ks6-5H-qci" id="Tvg-a9-Tw4"/>
+                        <outlet property="closeSushiLabel" destination="mTm-c1-Fze" id="baT-hw-hJM"/>
+                        <outlet property="sadSushiImage" destination="LWw-u7-E5N" id="AHD-Lz-Jcp"/>
+                        <outlet property="saiImage" destination="wsa-tc-jFU" id="pSl-yI-Q5Q"/>
+                        <outlet property="theDistanceLabel" destination="9DV-Gd-fPR" id="5gI-Jl-1qm"/>
+                        <outlet property="webviewTapArea" destination="Ukq-PC-ZxV" id="JfH-zM-js6"/>
+                        <segue destination="UAe-XH-zBK" kind="modal" identifier="fromCompassToFSWebView" id="Y57-ex-jCq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWt-fh-i7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="329" y="427"/>
+        </scene>
+        <!--Compass Webi View View Controller-->
+        <scene sceneID="44B-AG-2ii">
+            <objects>
+                <viewController id="UAe-XH-zBK" customClass="CompassWebiViewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zO7-vP-xN5">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="darkWoodBG.png" id="0iL-oH-EBQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <webView contentMode="scaleToFill" id="oAr-aj-lj7">
+                                <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UAe-XH-zBK" id="wSP-60-zx8"/>
+                                </connections>
+                            </webView>
+                            <navigationBar contentMode="scaleToFill" id="1dN-bQ-T0i">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="ngD-c9-R8U">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="rea-2s-Ffb">
+                                            <connections>
+                                                <action selector="backButton:" destination="UAe-XH-zBK" id="LLM-NE-Mlo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="4e6-B1-xDc">
+                                <rect key="frame" x="156" y="274" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="4e6-B1-xDc" id="S9q-1d-aEK"/>
+                        <outlet property="nearestVenueFSWebView" destination="oAr-aj-lj7" id="9te-D5-BIi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lw5-6f-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="95"/>
+        </scene>
+        <!--Tab My Sushi View Controller - My Sushi-->
+        <scene sceneID="8wj-0g-vbg">
+            <objects>
+                <viewController id="9ko-oZ-8hj" customClass="TabMySushiViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9D3-Hz-sTe">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="darkWoodBG.png" id="7Yz-x8-9Xy">
+                                <rect key="frame" x="-1" y="0.0" width="322" height="455"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.14901960780000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="topRight" image="sushiArrow.png" id="CH2-DZ-GaC">
+                                <rect key="frame" x="0.0" y="7" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZYa-1m-MCH">
+                                <rect key="frame" x="-1" y="0.0" width="322" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.14901960780000001" blue="0.1137254902" alpha="0.27000000000000002" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="sushiCell" rowHeight="100" id="MaZ-uJ-esW" customClass="SushiCell">
+                                        <rect key="frame" x="0.0" y="22" width="322" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="322" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="chopsticksTV.png" id="gGK-oA-nYB">
+                                                    <rect key="frame" x="13" y="20" width="60" height="60"/>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5DT-Ff-SuY">
+                                                    <rect key="frame" x="90" y="20" width="220" height="30"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aEf-Rw-Pc0">
+                                                    <rect key="frame" x="13" y="6" width="262" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="restaurant name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ls-Eb-EdL">
+                                                    <rect key="frame" x="200" y="72" width="102" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="14"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="venue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgX-aX-1rz">
+                                                    <rect key="frame" x="90" y="53" width="220" height="35"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lineForTableCell.png" id="MUN-Lu-dNW">
+                                                    <rect key="frame" x="0.0" y="98" width="320" height="2"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="sushiDate" destination="aEf-Rw-Pc0" id="mQN-jP-UNr"/>
+                                            <outlet property="sushiIconView" destination="gGK-oA-nYB" id="2HZ-zP-tXS"/>
+                                            <outlet property="sushiImageView" destination="gGK-oA-nYB" id="6hJ-yR-ppC"/>
+                                            <outlet property="sushiName" destination="5DT-Ff-SuY" id="QUW-v2-sfr"/>
+                                            <outlet property="sushiNameJapanese" destination="CgX-aX-1rz" id="XZ1-d4-DPk"/>
+                                            <outlet property="sushiRestauraunt" destination="0ls-Eb-EdL" id="GAE-rs-dRW"/>
+                                            <segue destination="qvo-4g-th6" kind="push" identifier="viewSushi" id="B1O-GG-I2N"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9ko-oZ-8hj" id="TnK-nm-thj"/>
+                                    <outlet property="delegate" destination="9ko-oZ-8hj" id="5tk-pv-xjN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Sushi" id="yDH-Al-hGt">
+                        <barButtonItem key="leftBarButtonItem" title="Map" id="56m-gz-Ff3">
+                            <connections>
+                                <segue destination="9oe-W3-tlb" kind="push" identifier="sushiMap" id="sS4-yO-Lvr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="+" id="aDR-4f-J9h">
+                            <connections>
+                                <segue destination="TZx-Jp-0zt" kind="modal" identifier="addSushi" id="jcM-Mz-ES5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="aDR-4f-J9h" id="LOG-jo-QSw"/>
+                        <outlet property="sushiArrow" destination="CH2-DZ-GaC" id="9bE-B1-Ka2"/>
+                        <outlet property="tableView" destination="ZYa-1m-MCH" id="krI-U4-aoR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9K-Ku-grW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848" y="1112"/>
+        </scene>
+        <!--Sushi Detail View Controller-->
+        <scene sceneID="kDR-wQ-vr2">
+            <objects>
+                <viewController id="qvo-4g-th6" customClass="SushiDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hde-GR-zAb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="darkWoodBG.png" id="jnN-Dc-YZe">
+                                <rect key="frame" x="0.0" y="-56" width="320" height="568"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bCB-Un-PIp">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" id="fmY-l8-o7Z">
+                                        <rect key="frame" x="206" y="342" width="102" height="102"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="料亭" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wvY-U1-3At">
+                                        <rect key="frame" x="18" y="242" width="85" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="17"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="rest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4HD-uT-bo3">
+                                        <rect key="frame" x="20" y="260" width="288" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="日付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="glG-hh-erB">
+                                        <rect key="frame" x="18" y="372" width="85" height="27"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="17"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P29-85-XdF">
+                                        <rect key="frame" x="23" y="392" width="285" height="41"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="住所" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dOq-vJ-0tr">
+                                        <rect key="frame" x="20" y="303" width="85" height="27"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="17"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jt8-vO-DwA">
+                                        <rect key="frame" x="20" y="322" width="288" height="41"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="20"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" id="XzP-w9-9gb">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" id="PXk-id-e3O">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="192"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="4Vi-Io-vt5" appends="YES" id="Iq3-Dg-I7O"/>
+                                                </connections>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ua8-XL-Lmo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="BAx-fo-hKc">
+                            <connections>
+                                <action selector="shareToSocial:" destination="qvo-4g-th6" id="Rbd-Wg-ADc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="bCB-Un-PIp" id="Iic-cw-U3s"/>
+                        <outlet property="sushiAddress" destination="Jt8-vO-DwA" id="kSX-dB-Py1"/>
+                        <outlet property="sushiDetailDate" destination="P29-85-XdF" id="Nvz-0v-YMz"/>
+                        <outlet property="sushiDetailImage" destination="PXk-id-e3O" id="FYJ-YO-Fpn"/>
+                        <outlet property="sushiDetailVenue" destination="4HD-uT-bo3" id="Tvm-PN-pVn"/>
+                        <outlet property="sushiType" destination="fmY-l8-o7Z" id="sfC-zq-IUM"/>
+                        <segue destination="078-0I-bo3" kind="push" identifier="viewFullPicture" id="2KC-4d-xnk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQY-Y6-f6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Vi-Io-vt5">
+                    <connections>
+                        <action selector="tapTapped:" destination="qvo-4g-th6" id="6Ec-S7-H4B"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1398" y="1112"/>
+        </scene>
+        <!--Sushi Detail Full Picture View Controller-->
+        <scene sceneID="Lah-J6-PF6">
+            <objects>
+                <viewController id="078-0I-bo3" customClass="SushiDetailFullPictureViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JVu-eS-H4x">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="darkWoodBG.png" id="XS5-qU-LRi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="hvE-WH-viQ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3tO-hM-5wO">
+                        <barButtonItem key="backBarButtonItem" title="back" id="oLt-um-4lv"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="hvE-WH-viQ" id="qAk-Pb-REJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Me0-JI-29y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="1048"/>
+        </scene>
+        <!--Add VenueVC-->
+        <scene sceneID="kwD-6G-6vV">
+            <objects>
+                <viewController id="HIS-BQ-x4Z" customClass="AddVenueVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rvx-lI-3w5">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="darkWoodBG.png" id="ZeE-i7-yRV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <color key="backgroundColor" red="0.1019607843" green="0.14901960780000001" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="Izd-hT-u95">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="FOv-zI-UZx">
+                                        <rect key="frame" x="15" y="68" width="39" height="36"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Compass.png" id="D7j-JZ-Qny">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="36"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="select restaurant below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="78N-gF-odC">
+                                        <rect key="frame" x="56" y="75" width="221" height="31"/>
+                                        <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                        <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" id="vcF-b9-Aaz">
+                                <rect key="frame" x="0.0" y="126" width="320" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="localVenue" textLabel="bu5-nc-ZCu" detailTextLabel="90q-aY-k5m" rowHeight="64" style="IBUITableViewCellStyleSubtitle" id="Uml-O4-TrN">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bu5-nc-ZCu">
+                                                    <rect key="frame" x="10" y="8" width="38" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="18"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="90q-aY-k5m">
+                                                    <rect key="frame" x="10" y="36" width="46" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                    <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HIS-BQ-x4Z" id="Ex1-s4-rse"/>
+                                    <outlet property="delegate" destination="HIS-BQ-x4Z" id="S60-KO-Mti"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="jhE-jq-UFd" id="mcZ-dc-BcV"/>
+                        <outlet property="tableView" destination="vcF-b9-Aaz" id="Waw-wP-1ix"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOS-VU-29C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="jhE-jq-UFd">
+                    <connections>
+                        <outlet property="delegate" destination="HIS-BQ-x4Z" id="SNy-fH-i2G"/>
+                        <outlet property="searchContentsController" destination="HIS-BQ-x4Z" id="Ej5-Jw-eay"/>
+                        <outlet property="searchResultsDataSource" destination="HIS-BQ-x4Z" id="CIt-6x-pJV"/>
+                        <outlet property="searchResultsDelegate" destination="HIS-BQ-x4Z" id="Ln0-bO-Y7l"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1854" y="1820"/>
+        </scene>
+        <!--Add Sushi View Controller - Title-->
+        <scene sceneID="2h1-lf-h3e">
+            <objects>
+                <viewController id="TZx-Jp-0zt" customClass="AddSushiViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e8D-4H-yBo">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="darkWoodBG.png" id="E7v-lh-ig0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" id="FLq-cL-YTg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add Sushi" id="S9Y-QU-g6p">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kET-13-SvJ">
+                                            <connections>
+                                                <action selector="cancelAddingSushi:" destination="TZx-Jp-0zt" id="CXo-th-KjY"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PhE-S2-BB4">
+                                            <connections>
+                                                <action selector="doneAddingSushi:" destination="TZx-Jp-0zt" id="YOO-PW-ZOA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" id="PPb-KB-eKL" userLabel="Add Picture">
+                                <rect key="frame" x="20" y="58" width="290" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="jhS-Os-qO4">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="iKU-HQ-60i">
+                                                <rect key="frame" x="12" y="10" width="40" height="40"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="camera.png" id="fxj-tg-L2d">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="add sushi picture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ejR-qY-vxn">
+                                                <rect key="frame" x="76" y="18" width="194" height="31"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="ExW-8Z-2fU" userLabel="Add Sushi Name">
+                                <rect key="frame" x="20" y="136" width="290" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="uYv-8B-91x">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="dvS-Kk-ghG">
+                                                <rect key="frame" x="12" y="10" width="40" height="36"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="soySauce.png" id="9aD-Rz-Hyd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="36"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="add sushi name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ecr-PF-e4H">
+                                                <rect key="frame" x="71" y="18" width="194" height="31"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex: california roll" minimumFontSize="17" id="sPb-Jn-mks">
+                                                <rect key="frame" x="71" y="16" width="216" height="30"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TZx-Jp-0zt" id="pcV-lf-2Va"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Mwy-oC-3Ed" userLabel="Add Venue Name">
+                                <rect key="frame" x="20" y="217" width="290" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="QpQ-1T-Kwi">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="60"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" id="wrP-xq-6hG">
+                                                <rect key="frame" x="12" y="10" width="40" height="36"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Compass.png" id="OD3-nk-5e0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="36"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="add restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rg1-Eg-ZrD">
+                                                <rect key="frame" x="71" y="17" width="194" height="31"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="19"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enjoy it?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="czy-2m-cNS">
+                                <rect key="frame" x="28" y="318" width="121" height="41"/>
+                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="25"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Type?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UQD-TO-Xre">
+                                <rect key="frame" x="28" y="440" width="142" height="41"/>
+                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="25"/>
+                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="M7b-LL-DCO" userLabel="Good">
+                                <rect key="frame" x="168" y="303" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="WlQ-H5-UPO">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="thumbsUp.png" id="Xfo-Ut-5YQ">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Good!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SDd-pl-cLU">
+                                                <rect key="frame" x="9" y="44" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="VE9-Gr-gHT" userLabel="Bad">
+                                <rect key="frame" x="250" y="303" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="c4h-q2-Qdh">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="thumbsDown.png" id="hEq-D3-eBL">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bad!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="75Q-TI-imB">
+                                                <rect key="frame" x="9" y="44" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="che-DX-zJB" userLabel="Roll">
+                                <rect key="frame" x="168" y="390" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="LrT-NF-hr0">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sushiRollTV.png" id="Op2-lP-Hfi">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vnb-AR-ZdE">
+                                                <rect key="frame" x="9" y="44" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="zvD-by-Nqb" userLabel="Sushi">
+                                <rect key="frame" x="250" y="390" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="mbe-Dc-41V">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sushiTV.png" id="9mU-tH-OrB">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sushi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5d3-se-Se2">
+                                                <rect key="frame" x="9" y="44" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="uDb-CI-uVg" userLabel="Sashimi">
+                                <rect key="frame" x="168" y="468" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="0Ke-t1-y5y">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="sashimiTV.png" id="aaV-aY-HGf">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sashimi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NYq-Ex-Lu3">
+                                                <rect key="frame" x="7" y="44" width="46" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="kq8-5s-zHV" userLabel="Other">
+                                <rect key="frame" x="250" y="468" width="60" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="09t-go-uLP">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="chopsticksTV.png" id="tTK-Dh-nNm">
+                                                <rect key="frame" x="10" y="3" width="40" height="40"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Other" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oZv-1X-bPo">
+                                                <rect key="frame" x="9" y="44" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" name="HiraKakuProN-W3" family="Hiragino Kaku Gothic ProN" pointSize="12"/>
+                                                <color key="textColor" red="0.98039215690000003" green="0.93725490199999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.43529411759999997" blue="0.2901960784" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="CPm-wc-kzB"/>
+                    <connections>
+                        <outlet property="addSushiNameImageView" destination="9aD-Rz-Hyd" id="yoG-Iw-S6n"/>
+                        <outlet property="addSushiNameView" destination="uYv-8B-91x" id="HMH-pj-PGI"/>
+                        <outlet property="addSushiPictureLabel" destination="ejR-qY-vxn" id="BGn-86-mTL"/>
+                        <outlet property="addVenueView" destination="QpQ-1T-Kwi" id="BaZ-cy-kF6"/>
+                        <outlet property="addVenueViewImageView" destination="OD3-nk-5e0" id="p8D-mI-51z"/>
+                        <outlet property="doneButton" destination="PhE-S2-BB4" id="h0e-If-TS2"/>
+                        <outlet property="enjoyItLabel" destination="czy-2m-cNS" id="T3G-ST-cT7"/>
+                        <outlet property="otherImageView" destination="tTK-Dh-nNm" id="L7h-cg-2df"/>
+                        <outlet property="otherView" destination="09t-go-uLP" id="CQ8-aS-nwm"/>
+                        <outlet property="rollImageView" destination="Op2-lP-Hfi" id="kB4-C0-slA"/>
+                        <outlet property="rollView" destination="LrT-NF-hr0" id="CFP-xS-81d"/>
+                        <outlet property="sashimiImageView" destination="aaV-aY-HGf" id="C9T-PZ-BIC"/>
+                        <outlet property="sashimiView" destination="0Ke-t1-y5y" id="bcI-22-b17"/>
+                        <outlet property="sushiImageView" destination="9mU-tH-OrB" id="bwf-lh-ScM"/>
+                        <outlet property="sushiNameLabel" destination="ecr-PF-e4H" id="2PE-6Q-pYW"/>
+                        <outlet property="sushiNameTextField" destination="sPb-Jn-mks" id="beU-V9-dxS"/>
+                        <outlet property="sushiTypeLabel" destination="UQD-TO-Xre" id="anL-EY-0m1"/>
+                        <outlet property="sushiView" destination="mbe-Dc-41V" id="ahd-Zp-Hly"/>
+                        <outlet property="takePictureView" destination="jhS-Os-qO4" id="8Iv-Ec-w56"/>
+                        <outlet property="takePictureViewImageView" destination="fxj-tg-L2d" id="7Z1-rw-CPb"/>
+                        <outlet property="thumbsDownImageView" destination="hEq-D3-eBL" id="DJa-56-oW6"/>
+                        <outlet property="thumbsDownView" destination="c4h-q2-Qdh" id="AlV-e0-eCJ"/>
+                        <outlet property="thumbsUpImageView" destination="Xfo-Ut-5YQ" id="WaV-oz-A6a"/>
+                        <outlet property="thumbsUpView" destination="WlQ-H5-UPO" id="Tz0-y0-iQ5"/>
+                        <outlet property="venueLabel" destination="Rg1-Eg-ZrD" id="nfS-DQ-QBS"/>
+                        <segue destination="HIS-BQ-x4Z" kind="modal" identifier="add4SSushiVenue" modalTransitionStyle="partialCurl" id="CSq-Aj-hLH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0t-8A-HfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1405" y="1820"/>
+        </scene>
+        <!--My Sushi Map View Controller - My Sushi Map-->
+        <scene sceneID="fOb-6d-DTH">
+            <objects>
+                <viewController title="My Sushi Map" id="9oe-W3-tlb" customClass="MySushiMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cZP-u1-b1w">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="WiH-eT-SE9">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9oe-W3-tlb" id="qlg-4H-b3E"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mySushiMapView" destination="WiH-eT-SE9" id="NCx-JL-Uxf"/>
+                        <segue destination="MDo-UZ-NMh" kind="push" identifier="mapBigPic" id="buo-eb-SjG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VTj-gl-OYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1469" y="2548"/>
+        </scene>
+        <!--My Sushi Map Picture View Controller-->
+        <scene sceneID="jn2-5I-Ps7">
+            <objects>
+                <viewController id="MDo-UZ-NMh" customClass="MySushiMapPictureViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fM1-y7-iaJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" id="qre-b8-BRh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iBb-JW-lUw"/>
+                    <connections>
+                        <outlet property="imageView" destination="qre-b8-BRh" id="N3C-Vy-CYt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ge-C9-kgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1872" y="2546"/>
+        </scene>
+        <!--Navigation Controller - Map-->
+        <scene sceneID="uia-Zd-8GV">
+            <objects>
+                <navigationController id="QKg-Mg-Ojh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="Nct-KD-h1N"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BdW-nj-tL9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NX3-kD-bh9" kind="relationship" relationship="rootViewController" id="gvp-7X-52z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WHQ-7n-XgE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="-295"/>
+        </scene>
+        <!--Navigation Controller - MySushi-->
+        <scene sceneID="ld5-w7-3Iy">
+            <objects>
+                <navigationController id="67E-e6-H6h" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MySushi" id="5W1-hA-JAX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="I2G-cT-ADC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9ko-oZ-8hj" kind="relationship" relationship="rootViewController" id="tqt-FP-yQd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nL2-J7-LFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="346" y="1184"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Compass.png" width="42" height="42"/>
+        <image name="camera.png" width="60" height="60"/>
+        <image name="chopsticks.png" width="100" height="300"/>
+        <image name="chopsticksTV.png" width="60" height="60"/>
+        <image name="currentLocation.png" width="30" height="30"/>
+        <image name="darkWoodBG.png" width="320" height="568"/>
+        <image name="lineForTableCell.png" width="320" height="2"/>
+        <image name="plate.png" width="300" height="300"/>
+        <image name="sadSushi.png" width="150" height="150"/>
+        <image name="sashimiTV.png" width="60" height="60"/>
+        <image name="soySauce.png" width="60" height="60"/>
+        <image name="sushiArrow.png" width="320" height="320"/>
+        <image name="sushiRollTV.png" width="60" height="60"/>
+        <image name="sushiTV.png" width="60" height="60"/>
+        <image name="thumbsDown.png" width="60" height="60"/>
+        <image name="thumbsUp.png" width="60" height="60"/>
+    </resources>
+    <classes>
+        <class className="AddSushiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddSushiViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="add4QVenue:"/>
+                <relationship kind="action" name="addName:"/>
+                <relationship kind="action" name="addVenue:"/>
+                <relationship kind="action" name="cancelAddingSushi:"/>
+                <relationship kind="action" name="doneAddingSushi:"/>
+                <relationship kind="action" name="getLatLong:"/>
+                <relationship kind="action" name="otherViewTapped:"/>
+                <relationship kind="action" name="rollViewTapped:"/>
+                <relationship kind="action" name="sashimiViewTapped:"/>
+                <relationship kind="action" name="sushiViewTapped:"/>
+                <relationship kind="action" name="takePicture:"/>
+                <relationship kind="action" name="thumbsDownViewTapped:"/>
+                <relationship kind="action" name="thumbsUpViewTapped:"/>
+                <relationship kind="outlet" name="addSushiNameImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="addSushiNameView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="addSushiPictureLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="addVenueView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="addVenueViewImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="enjoyItLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="otherImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="otherView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="rollImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rollView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sashimiImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sashimiView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sushiCityName" candidateClass="NSString"/>
+                <relationship kind="outlet" name="sushiImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sushiPic" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiPictureViewHolder" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sushiTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="takePictureView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="takePictureViewImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="thumbsDownImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="thumbsDownView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="thumbsUpImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="thumbsUpView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="venueLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="AddVenueVC" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddVenueVC.h"/>
+            <relationships>
+                <relationship kind="action" name="addVenueWithButton:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="venueTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CompassWebiViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompassWebiViewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="nearestVenueFSWebView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MapVenueWebViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapVenueWebViewViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="venueFSWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="webActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="MySushiMapPictureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MySushiMapPictureViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MySushiMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MySushiMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mySushiMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="SushiCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SushiCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="sushiDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiIconView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiNameJapanese" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiRestauraunt" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SushiDetailFullPictureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SushiDetailFullPictureViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="SushiDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SushiDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="shareToSocial:"/>
+                <relationship kind="action" name="tapTapped:"/>
+                <relationship kind="outlet" name="checkMarkImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sushiAddress" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiDetailDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiDetailGoodOrBad" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sushiDetailImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiDetailMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="sushiDetailVenue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sushiThumbsUp" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="sushiType" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="viewTest" candidateClass="UIView"/>
+                <relationship kind="outlet" name="xImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TabCompassViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabCompassViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="fSVenuePageButton:"/>
+                <relationship kind="action" name="webViewTapAreaTapped:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="closeSushiLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="japaneseNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sadSushiImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="saiImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="theDistanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="webviewTapArea" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="TabMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshLocationButton:"/>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="venueMapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="TabMySushiViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TabMySushiViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sushiArrow" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="VenueCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VenueCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="venueAddress" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="venueDistance" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="venueName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VenueTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VenueTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="venueTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="fkm-tp-K0J"/>
+    </inferredMetricsTieBreakers>
+</document>
