@@ -23,7 +23,7 @@
     float ourPhoneFloatLong;
     VenueObject *selectedVenue;
     NSMutableArray * allItems1;
-    AppDelegate *appDelegate ;
+    AppDelegate *appDelegate;
     BOOL activityIndicatorStopped;
     CompassWebiViewViewController *compassWebbyViewController;
 }
@@ -33,9 +33,8 @@
 
 @property (nonatomic, strong) NSString * strLatitude;
 @property (nonatomic, strong) NSString * strLongitude;
-//@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, weak) NSString *vcURLString;
 @property (nonatomic) BOOL headingDidStartUpdating;
-//@property (nonatomic, strong) 
 
 @end
 
@@ -107,22 +106,8 @@
 //    appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     thisNearPlace = appDelegate.closestVenue;
-    
-    //NSString *nearPlaceName = thisNearPlace.title;
-//    NSNumber *temporaryDistancefromFS = thisNearPlace.distance;
-//    NSString *distLabel = [NSString stringWithFormat:@"%@",temporaryDistancefromFS];
-   
-    //self.theDistanceLabel.text = @"Calculating";
-    //self.theDistanceLabel.text = @"Calculating.";
-   // self.theDistanceLabel.text = @"Calculating..";
-   // self.theDistanceLabel.text = @"Calculating...";
-    //return;
-//    self.theDistanceLabel.text = distLabel;
-    //self.c//nearPlaceName;
-    //self.theDistanceLabel.text = distLabel;
-    
-
-
+    self.vcURLString = appDelegate.logURL;
+    NSLog(@"search url is %@", self.vcURLString);
 }
 
 -(void) startStandardLocationServices
@@ -146,11 +131,8 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     // If it's a relatively recent event, turn off updates to save power
     CLLocation* startLocation = [locations lastObject];
-//    NSDate* eventDate = startLocation.timestamp;
-//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-//    if (abs(howRecent) < 15.0) {
+
     if (startLocation.coordinate.latitude == 0 && startLocation.coordinate.longitude == 0) {
-       // NSLog(@"Location is 0,0.");
         return;
     }
     
@@ -164,7 +146,7 @@
     thisDistVenueLong = [appDelegate.closestVenue.venueLongitude floatValue];
   //  give latitude2,lang of destination   and latitude,longitude of first place.
     
-    //this function return distance in kilometer.
+    //this function returns distance in kilometer.
     
     float DistRadCurrentLat = degreesToRadians(startLocation.coordinate.latitude);
     float DistRadCurrentLong = degreesToRadians(startLocation.coordinate.longitude);
@@ -195,181 +177,41 @@
     
    // float distPlaceHolder = [thisNearPlace.distance floatValue];
     int rounding = (distBetweenStartandVenueFeet);
-    NSString *distLabel = [[NSString alloc] init];
-    if (distBetweenStartandVenueFeet > 10000) {
-        distLabel = [NSString stringWithFormat:@"Calculating..."];
+    int distBetweenStartandVenueMiles = (distBetweenStartandVenueFeet/5280);
+    if (distBetweenStartandVenueFeet > 5280)
+    {
+        rounding = distBetweenStartandVenueMiles;
+    }
+    else
+    {
+        rounding = distBetweenStartandVenueFeet;
+    };
 
-                     }
-    
-   // if (distBetweenStartandVenueFeet < 75) {
-     //   distLabel = [NSString stringWithFormat: @"Less than 100 feet, you're here, look up."];
-        
-   // }
-    else if (distBetweenStartandVenueFeet > 2640 && distBetweenStartandVenueFeet < 3168){
-        distLabel = @"0.5 miles";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 3168 && distBetweenStartandVenueFeet < 3696 ) {
-        distLabel = @"0.6 miles";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 3696 && distBetweenStartandVenueFeet < 4224 ) {
-        distLabel = @"0.7 miles";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 4224 && distBetweenStartandVenueFeet < 4752) {
-        distLabel = @"0.8 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 4752 && distBetweenStartandVenueFeet < 5016) {
-        distLabel = @"0.9 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 5016 && distBetweenStartandVenueFeet < 5808) {
-        distLabel = @"1 mile";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 5808 && distBetweenStartandVenueFeet < 6336) {
-        distLabel = @"1.1 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 6336 && distBetweenStartandVenueFeet < 6864) {
-        distLabel = @"1.2 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 6864 && distBetweenStartandVenueFeet < 7392) {
-        distLabel = @"1.3 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 7392 && distBetweenStartandVenueFeet < 7920) {
-        distLabel = @"1.4 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 7920 && distBetweenStartandVenueFeet < 8448) {
-        distLabel = @"1.5 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 8448 && distBetweenStartandVenueFeet < 8976) {
-        distLabel = @"1.6 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 8976 && distBetweenStartandVenueFeet < 9504) {
-        distLabel = @"1.7 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 9504 && distBetweenStartandVenueFeet < 10032) {
-        distLabel = @"1.8 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 10032 && distBetweenStartandVenueFeet < 10560) {
-        distLabel = @"1.9 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 10560 && distBetweenStartandVenueFeet < 11088) {
-        distLabel = @"2.0 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 11088 && distBetweenStartandVenueFeet < 11616) {
-        distLabel = @"2.1 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 11616 && distBetweenStartandVenueFeet < 12144) {
-        distLabel = @"2.2 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 12144 && distBetweenStartandVenueFeet < 12672) {
-        distLabel = @"2.3 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 12672 && distBetweenStartandVenueFeet < 13200) {
-        distLabel = @"2.4 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 13200 && distBetweenStartandVenueFeet < 13728) {
-        distLabel = @"2.5 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 13728 && distBetweenStartandVenueFeet < 14256) {
-        distLabel = @"2.6 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 14256 && distBetweenStartandVenueFeet < 14784) {
-        distLabel = @"2.7 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 14784 && distBetweenStartandVenueFeet < 15312) {
-        distLabel = @"2.8 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 15312 && distBetweenStartandVenueFeet < 15840) {
-        distLabel = @"2.9 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 15840 && distBetweenStartandVenueFeet < 16368) {
-        distLabel = @"3.0 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 16368 && distBetweenStartandVenueFeet < 16896) {
-        distLabel = @"3.1 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 16896 && distBetweenStartandVenueFeet < 17424) {
-        distLabel = @"3.2 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 17424 && distBetweenStartandVenueFeet < 17952) {
-        distLabel = @"3.3 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 17952 && distBetweenStartandVenueFeet < 18480) {
-        distLabel = @"3.4 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 18480 && distBetweenStartandVenueFeet < 19008) {
-        distLabel = @"3.5 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 19008 && distBetweenStartandVenueFeet < 19536) {
-        distLabel = @"3.6 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 19536 && distBetweenStartandVenueFeet < 20064) {
-        distLabel = @"3.7 miles";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 20064 && distBetweenStartandVenueFeet < 20592) {
-        distLabel = @"3.8 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 20592 && distBetweenStartandVenueFeet < 21120) {
-        distLabel = @"3.9 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 21120 && distBetweenStartandVenueFeet < 21648) {
-        distLabel = @"4.0 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 21648 && distBetweenStartandVenueFeet < 22176) {
-        distLabel = @"4.1 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 22176 && distBetweenStartandVenueFeet < 22704) {
-        distLabel = @"4.2 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 22704 && distBetweenStartandVenueFeet < 23232) {
-        distLabel = @"4.3 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 23232 && distBetweenStartandVenueFeet < 23760) {
-        distLabel = @"4.4 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 23760 && distBetweenStartandVenueFeet < 24288) {
-        distLabel = @"4.5 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 24288 && distBetweenStartandVenueFeet < 24816) {
-        distLabel = @"4.6 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 24816 && distBetweenStartandVenueFeet < 25344) {
-        distLabel = @"4.7 miles";
-    }
-    
-    else if (distBetweenStartandVenueFeet > 25344 && distBetweenStartandVenueFeet < 25872) {
-        distLabel = @"4.8 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 25872 && distBetweenStartandVenueFeet < 26400) {
-        distLabel = @"4.9 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 26400 && distBetweenStartandVenueFeet < 26928) {
-        distLabel = @"5.0 miles";
-    }
-    else if (distBetweenStartandVenueFeet > 26928 && distBetweenStartandVenueFeet < 100000) {
-        distLabel = @"5+ miles";
-    }
-    
-        else
-     
+       NSString *distLabel = [[NSString alloc] init];
+
         {
-            distLabel = [NSString stringWithFormat:@"%i feet", rounding];
+            if (distBetweenStartandVenueFeet > 5280) {
+                //distLabel = [NSString stringWithFormat:@"Calculating..."];
+                distLabel = [NSString stringWithFormat:@"%i miles", rounding];
+                
+            }
+            else
+                distLabel = [NSString stringWithFormat:@"%i feet", rounding];
+                
+                if (rounding < 150) {
+                    
+            distLabel = [NSString stringWithFormat:@" <150 feet, look up!"];
             self.saiImage.alpha = 1;
             self.sadSushiImage.alpha = 0;
     }
     
    // NSString *distLabel = [NSString stringWithFormat:@"%i feet",rounding];
     self.theDistance = distLabel;
+        }
     
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{
-    
-    //[self.activityIndicator stopAnimating];
-    //[[UIApplication sharedApplication] endIgnoringInteractionEvents];
 
     if (!self.headingDidStartUpdating) {
         [self setupCompassObjectsAndLabels];
@@ -445,21 +287,6 @@
 //        self.saiImage.alpha = 0;
 //        self.sadSushiImage.alpha = 1;
     }
-    
-    //NSNumber *distY = thisNearPlace.distance;
-    
-    // NSLog (@"the distance it's logging in km is %f", distBetweenStartandVenueMeters);
-    
-    //float distPlaceHolder = [thisNearPlace.distance floatValue];
-    //int rounding = (distBetweenStartandVenueMeters);
-    
-    //NSNumber *disttemp = roundf(distPlaceHolder);
-//    NSString *distLabel = [NSString stringWithFormat:@"%i",rounding];
-//    NSLog(@"%@", distLabel);
-//    self.theDistance = distLabel;
-//
-//    
-       //NSLog(@"true heading is %f", newHeading.trueHeading);
 
 }
 

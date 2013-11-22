@@ -1,5 +1,5 @@
 //
-//  TabCompassViewController.m
+//  TabCompassViewController.h
 //  SushiSnob
 //
 //  Created by MasterRyuX on 6/8/13.

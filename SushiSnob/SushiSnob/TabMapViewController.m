@@ -2,16 +2,16 @@
 //  TabMapViewController.m
 //  SushiSnob
 //
-//  Created by Andrew McCallum14 on 2013-06-06.
-//  Copyright (c) 2013 Andrew McCallum. All rights reserved.
+//  Created by MasterRyuX on 2013-06-06.
+//  Copyright (c) 2013 MasterRyuX. All rights reserved.
 //
 
 //
 //  TabMapViewController.m
 //  SushiSnob
 //
-//  Created by Andrew McCallum14 on 2013-06-06.
-//  Copyright (c) 2013 Andrew McCallum. All rights reserved.
+//  Created by MasterRyuX on 2013-06-06.
+//  Copyright (c) 2013 MasterRyuX. All rights reserved.
 //
 
 #import "TabMapViewController.h"

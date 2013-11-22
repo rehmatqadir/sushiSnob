@@ -2,8 +2,8 @@
 //  VenueTableViewController.m
 //  SushiSnob
 //
-//  Created by Craig on 6/8/13.
-//  Copyright (c) 2013 Andrew McCallum. All rights reserved.
+//  Created by MasterRyuX on 6/8/13.
+//  Copyright (c) 2013 MasterRyuX. All rights reserved.
 //
 
 #import "VenueTableViewController.h"

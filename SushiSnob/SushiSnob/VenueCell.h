@@ -2,8 +2,8 @@
 //  VenueCell.h
 //  SushiSnob
 //
-//  Created by Craig on 6/15/13.
-//  Copyright (c) 2013 Andrew McCallum. All rights reserved.
+//  Created by MasterRyuX on 6/15/13.
+//  Copyright (c) 2013 MasterRyuX. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

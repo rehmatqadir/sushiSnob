@@ -2,8 +2,8 @@
 //  AppDelegate.h
 //  SushiSnob
 //
-//  Created by Andrew McCallum14 on 2013-06-06.
-//  Copyright (c) 2013 Andrew McCallum. All rights reserved.
+//  Created by MasterRyuX on 2013-06-06.
+//  Copyright (c) 2013 MasterRyuX. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,7 +20,7 @@
 @class TabMySushiViewController;
 
 
-    NSArray *distanceSortedArray;
+NSArray *distanceSortedArray;
 float startingUserLocationFloatLat;
 float startingUserLocationFloatLong;
 NSString *latitudeWithCurrentCoordinates;
@@ -41,6 +41,7 @@ NSString *longitudeWithCurrentCoordinates;
 @property (strong, nonatomic)CLLocationManager*locationManager;
 @property (strong, nonatomic) NSMutableArray * fourSquareVenueObjectsArray;
 @property (strong, nonatomic) VenueObject * closestVenue;
+@property (nonatomic, strong) NSString *logURL;
 
 
 
